@@ -1,5 +1,5 @@
 Project name: \
-Group Number:39\
+Group Number:39 \
 Student Name(SID): (12578476), CHAN HOI WAI(12550928), LAI HO KWONG(12782125)
 
 Operation guides of server: \

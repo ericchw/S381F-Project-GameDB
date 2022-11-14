@@ -1,0 +1,13 @@
+{
+    "name": "Group Project Name",
+    "description": "This is a project design by S381F group #39",
+    "author": "COMPS381F group #39",
+    "version": "0.0.1",
+    "dependencies": {
+        "express": "*"
+    },
+    "engine": "node >= 12.0.0",
+    "scripts": {
+        "start": "node server"
+    }
+}
