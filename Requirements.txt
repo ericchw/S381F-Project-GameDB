@@ -27,7 +27,8 @@ A. Requirements (Total score: 100 marks)
           • Upon successful login, userid should be stored in a session 
       (b) The server provides basic CRUD services for your app. (40 marks)
           • The user can create new data objects or documents (in MongoDB).
-          • The user can update data objects or documents. • The user can delete inventory documents.
+          • The user can update data objects or documents. 
+          • The user can delete inventory documents.
           • The user can search data by some query conditions.
       (c) The server provides RESTful services. (20 marks) 
           • Provide API (path URL) to handle HTTP requests 

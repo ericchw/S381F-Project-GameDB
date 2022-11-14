@@ -1,6 +1,6 @@
 Project name: \
 Group Number:39 \
-Student Name(SID): (12578476), CHAN HOI WAI(12550928), LAI HO KWONG(12782125)
+Student Name(SID): YUEN HON KUEN(12578476), CHAN HOI WAI(12550928), LAI HO KWONG(12782125)
 
 Operation guides of server: \
  (a) Introduce how to test your Login/Logout pages \
