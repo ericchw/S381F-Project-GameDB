@@ -7,7 +7,7 @@ A. Requirements (Total score: 100 marks)
       (d) Use MongoDB driver or Mongoose or just allocate program variables to manage your database.
 
       All of your app files are put in a folder named “S381F-Project-<your project name>”. Inside your app folder, all files follow the structure:
-        S381F-Project-Game-Inventory-Management-System
+        S381F-Project-GameDB
             |___ server.js
             |___ package.json
             |___ public
