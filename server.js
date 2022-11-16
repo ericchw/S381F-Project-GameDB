@@ -89,10 +89,8 @@ catch(error){console.log(error)}});
 
 
 app.get('/logout', (req, res) => {
-
   req.session = null;
   res.redirect('/');
-
 });
 
 

@@ -29,6 +29,19 @@ exports.handleCreate = (req, res) => {
     let obj = {
       name: fields.name,
       type: fields.type,
+      description: fields.description,
+      developer: fields.developer,
+      publisher: fields.publisher,
+      os: {
+        windows: fields.windows,
+        macos: fields.macos,
+        linux: fields.linux
+      },
+      releaseDateAt: JSON.parse(JSON.stringify({now: new Date()})).now,
+      lastUpdateAt: JSON.parse(JSON.stringify({now: new Date()})).now,
+      lastUpdateBy: req.session.username,
+      photo: null,
+      photo_mimetype: null,
     };
     if (files.photo.size > 0) {
       const filename = files.photo.filepath;
@@ -36,8 +49,8 @@ exports.handleCreate = (req, res) => {
       if (fields.title && fields.title.length > 0) {
         title = fields.title;
       }
-      if (files.photo.type) {
-        obj["photo_type"] = files.photo.type;
+      if (files.photo.mimetype) {
+        obj["photo_mimetype"] = files.photo.mimetype;
       }
       fs.readFile(files.photo.filepath, (err, data) => {
         obj["photo"] = new Buffer.from(data).toString("base64");
@@ -74,13 +87,26 @@ exports.handleEdit = (req, res) => {
   const form = formidable({ multiples: true });
   inventoryModel.read(
     { _id: objid },
-    { photo: 1, photo_type: 1, lastUpdateBy: 1 },
+    { photo: 1, photo_mimetype: 1, lastUpdateBy: 1 },
     (result) => {
       if (result && result[0]["lastUpdateBy"] == req.session.username) {
         form.parse(req, (err, fields, files) => {
           let obj = {
             name: fields.name,
-            type: fields.inv_type,
+            type: fields.type,
+            description: fields.description,
+            developer: fields.developer,
+            publisher: fields.publisher,
+            os: {
+              windows: fields.windows,
+              macos: fields.macos,
+              linux: fields.linux
+            },
+            releaseDateAt: JSON.parse(JSON.stringify({now: new Date()})).now,
+            lastUpdateAt: JSON.parse(JSON.stringify({now: new Date()})).now,
+            lastUpdateBy: req.session.username,
+            photo: result[0].photo,
+            photo_mimetype: result[0].photo_mimetype,
           };
           if (files.photo.size > 0) {
             const filename = files.photo.filepath;
@@ -88,8 +114,8 @@ exports.handleEdit = (req, res) => {
             if (fields.title && fields.title.length > 0) {
               title = fields.title;
             }
-            if (files.photo.type) {
-              obj["photo_type"] = files.photo.type;
+            if (files.photo.mimetype) {
+              obj["photo_mimetype"] = files.photo.mimetype;
             }
             fs.readFile(files.photo.filepath, (err, data) => {
               obj["photo"] = new Buffer.from(data).toString("base64");
@@ -100,7 +126,7 @@ exports.handleEdit = (req, res) => {
           }
         });
       } else {
-        res.render("err", { errmsg: "can not edit" });
+        res.render("err", { errmsg: "Cannot edit" });
       }
     }
   );
@@ -112,7 +138,7 @@ exports.handleGetEdit = (req, res) => {
     if (result && result[0]["lastUpdateBy"] == req.session.username) {
       res.render("edit", result[0]);
     } else {
-      res.render("err", { errmsg: "can not edit" });
+      res.render("err", { errmsg: "Cannot edit" });
     }
   });
 };
@@ -124,11 +150,11 @@ exports.handleDelete = (req, res) => {
         if (result) {
           res.redirect(`/main`);
         } else {
-          res.render("err", { errmsg: "can not delete" });
+          res.render("err", { errmsg: "Cannot delete" });
         }
       });
     } else {
-      res.render("err", { errmsg: "can not delete" });
+      res.render("err", { errmsg: "Cannot delete" });
     }
   });
 };

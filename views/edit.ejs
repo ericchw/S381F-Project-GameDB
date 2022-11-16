@@ -28,46 +28,47 @@
     </style>
     
     <head>
-        <title>Edit</title>
+        <title>Edit <%=name%></title>
     </head>
     <body>       
-            <h1>Create new inventory</h1>
+            <h1>Edit <%=name%></h1>
             <form action="/edit/?id=<%=_id%>" method="POST" enctype="multipart/form-data">
                 <!--the enctype attribute is required for a file upload control form-->
                 <!--the attribute is not encoding characters-->
                 <label for="name">Name*:</label>
                 <input type="text" id="name" name="name"  value=<%=name%> required><br>
                 
-                <label for="inv_type">Type:</label>
-                <input type="text" id="inv_type" name="inv_type"  value=<%=type %> ><br>
+                <label for="type">Type:</label>
+                <input type="text" id="type" name="type" value=<%=type%>><br>
 
-                <label for="quantity">Quantity:</label>
-                <input type="text" id="quantity" name="quantity" value=<%=quantity%>><br>
+                <label for="description">Description:</label>
+                <input type="text" id="description" name="description" value=<%=description%>><br>
                 
-                <label for="street">Street:</label>
-                <input type="text" id="street" name="street"  value=<%=inventory_address.street%> ><br>
+                <label for="developer">Developer:</label>
+                <input type="text" id="developer" name="developer" value=<%=developer%>><br>
                 
-                <label for="building">Building:</label>
-                <input type="text" id="building" name="building"  value=<%=inventory_address.building%>><br>
+                <label for="publisher">Publisher:</label>
+                <input type="text" id="publisher" name="publisher" value=<%=publisher%>><br>
                 
-                <label for="zipcode">Country:</label>
-                <input type="text" id="country" name="country"  value=<%=inventory_address.country%>><br>
+                <label for="windows">Support Windows:</label>
+                <input type="checkbox" id="windows" name="windows" value=<%=os.windows%>><br>
 
-                <label for="zipcode">Zipcode:</label>
-                <input type="text" id="zipcode" name="zipcode"  value=<%=inventory_address.zipcode%>><br>
+                <label for="macos">Support macOS:</label>
+                <input type="checkbox" id="macos" name="macos" value=<%=os.macos%>><br>
 
-                <label for="latitude">GPS Latitude:</label>
-                <input type="text" id="latitude" name="latitude"  value=<%=inventory_address.coord.lat%>><br>
+                <label for="linux">Support Linux:</label>
+                <input type="checkbox" id="linux" name="linux" value=<%=os.linux%>><br>
                 
-                <label for="longitude">GPS Longitude:</label>
-                <input type="text" id="longitude" name="longitude"  value=<%=inventory_address.coord.lon%>><br>
+                <label for="releaseDateAt">Release date at:</label>
+                <input type="datetime-local" id="releaseDateAt" name="releaseDateAt" value=<%=releaseDateAt%>><br>
 
-                    <label  for="photo">Photo:</label>
-                    <input type="file"style="font-size: 20px;" id="photo" name="photo" placeholder="Please upload JPEG/PNG format"><br>
+                <label  for="photo">Photo:</label>
+                <input type="file"style="font-size: 20px;" id="photo" name="photo" placeholder="Please upload JPEG/PNG format."><br>
+
                 <div class =button>
                     <input type="submit" value="Update" style="font-size: 25px;">
-                <input type="button" style="float: right ;font-size: 25px;"value="Back" onclick="history.back()">
-            </div>
+                    <input type="button" style="float: right ;font-size: 25px;"value="Back" onclick="history.back()">
+                </div>
                 
             </form>
     </body>

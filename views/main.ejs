@@ -67,11 +67,11 @@ table.myFormat tr td { font-size: 30px; }
         
         <div class=row ml-md-auto>
             <a href="/logout" class="btn btn-primary pull-right" role="button">Log out</a>
-            <a href="/create" class="btn btn-primary" role="button" >Create new app</a>
+            <a href="/create" class="btn btn-primary" role="button" >Create new game data</a>
     </div>
-    <div class=search>  <p>Search app name:
+    <div class=search>  <p>Search game name:
         <label for="bar"><span class="glyphicon glyphicon-search"></span></label><input style="width: 100%; font-size: 30px; 
-        height: 5%;"  type="text" id="myInput" placeholder="Search name:" name="bar" ><br></p>
+        height: 5%;"  type="text" id="myInput" placeholder="Search game name:" name="bar" ><br></p>
     </div>
     <div >
         <table id="myTable" class='myFormat' >
@@ -84,7 +84,7 @@ table.myFormat tr td { font-size: 30px; }
 
 </body></html>
 <script>
-let result=<%- JSON.stringify(result)%>;
+let result = <%- JSON.stringify(result)%>;
 console.log(result)
 document.getElementById("myInput").addEventListener("keyup", myFunction);
 function myFunction() { 

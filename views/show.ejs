@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>inventory</title>
+        <title><%=name%> details</title>
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
         integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
         crossorigin=""/>
@@ -34,19 +34,27 @@
                 <div class="row">
                     
                     <% if(photo){ %>
-                        <img src="data:<%= photo_type %>;base64, <%= photo %>" style="width:20" />
+                        <img src="data:<%= photo_mimetype %>;base64, <%= photo %>" style="width:20" />
                     <% } %>
                         
                         <br>
                     
                 </div>
                 <div class="row">
-                    <p>Name: <%=name%> </p><br>
-                    <p>Type: <%=type%> </p><br>
-                <br>  
-                <p>Last update by: <%=lastUpdateBy%></p><br>
-                
-                
+                    <table style="width:100%">
+                        <tr><td><p>Name:</p></td><td><p><%=name%></p></td></tr>
+                        <tr><td><p>Type:</p></td><td><p><%=type%></p></td></tr>
+                        <tr><td><p>Description:</p></td><td><p><%=description%></p></td></tr>
+                        <tr><td><p>Developer:</p></td><td><p><%=developer%></p></td></tr>
+                        <tr><td><p>Publisher:</p></td><td><p><%=publisher%></p></td></tr>
+                        <tr><td><p>Support Windows:</p></td><% if(os.windows){ %><td><p>Support</p></td> <% } %><% if(!os.windows){ %><td><p>Not Support</p></td><% } %></tr>
+                        <tr><td><p>Support macOS:</p></td><% if(os.macos){ %><td><p>Support</p></td> <% } %><% if(!os.macos){ %><td><p>Not Support</p></td><% } %></tr>
+                        <tr><td><p>Support Linux:</p></td><% if(os.linux){ %><td><p>Support</p></td> <% } %><% if(!os.linux){ %><td><p>Not Support</p></td> <% } %></tr>
+                        <tr><td><p>Release date at:</p></td><td><p> <%=releaseDateAt%> </p></td></tr>
+                        <tr><td><p>Last update at:</p></td><td><p> <%=lastUpdateAt%> </p></td></tr>
+                        <tr><td><p>Last update by:</p></td><td><p><%=lastUpdateBy%></p></td></tr>
+                    </table>
+                    <br>
             </div>
             </div>
             <div class="row ml-md-auto">

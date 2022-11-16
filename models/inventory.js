@@ -1,5 +1,6 @@
 const getCollection = require("../utils/db").getCollection;
 const assert = require("assert");
+
 exports.create = (criteria, callback)=>{
     const collection = getCollection();
     collection.insertOne(criteria, (err, docs) =>{
@@ -29,13 +30,7 @@ exports.read = (criteria,projection,callback)=>{
         });
     }
 }
-    // criteria, (err, docs) =>{
-    //     try{
-    //         assert.equal(err,null);
-    //         callback(docs.ops[0]._id);
-    //     }catch(error){
-    //         callback(false)
-    //     }
+
 exports.delete =(criteria, callback)=>{
     const collection = getCollection();
     collection.deleteOne(criteria,(err,result)=>{
@@ -49,16 +44,16 @@ exports.delete =(criteria, callback)=>{
     });
 }
 
-    exports.update =(criteria,updateItem,callback)=>{
-        const collection = getCollection();
-        updateItem["_id"] = criteria["_id"]
-        let cursor = collection.replaceOne(criteria,updateItem,(err,docs)=>{
-            try{
+exports.update =(criteria,updateItem,callback)=>{
+    const collection = getCollection();
+    updateItem["_id"] = criteria["_id"]
+    let cursor = collection.replaceOne(criteria,updateItem,(err,docs)=>{
+        try{
             
-                assert.equal(err,null);
-                callback(docs);
-            }catch(error){
-                callback(false)
-            }
-        });
-    }
+            assert.equal(err,null);
+            callback(docs);
+        }catch(error){
+            callback(false)
+        }
+    });
+}
