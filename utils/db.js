@@ -12,7 +12,7 @@ const mongodbConnect = (callback) => {
     client.connect((err) => {
         assert.equal(null, err);
         let db = client.db(dbName);
-        _collection = db.collection("app")
+        _collection = db.collection("games")
         callback();
     })
 }
