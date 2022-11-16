@@ -1,6 +1,6 @@
 {
     "name": "gamedb",
-    "description": "This is a project design by S381F group #39. GameDB is database of everything on Steam.",
+    "description": "This is a project design by S381F group #39. GameDB is a database for game.",
     "author": "COMP-S381F Group #39",
     "version": "0.0.1",
     "dependencies": {
