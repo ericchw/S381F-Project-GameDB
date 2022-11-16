@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+    h1{
+        text-align:center;
+        font-size:65px;
+    }
+    input[type=text], select {
+    width: 100%;
+    padding: 10px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size:18px;
+    }
+    .button{
+        
+  height: 5%;
+  color: white;
+  padding: 14px 20px;
+  margin: 20px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+    }
+    </style>
+    
+    <head>
+        <title>Edit</title>
+    </head>
+    <body>       
+            <h1>Create new inventory</h1>
+            <form action="/edit/?id=<%=_id%>" method="POST" enctype="multipart/form-data">
+                <!--the enctype attribute is required for a file upload control form-->
+                <!--the attribute is not encoding characters-->
+                <label for="name">Name*:</label>
+                <input type="text" id="name" name="name"  value=<%=name%> required><br>
+                
+                <label for="inv_type">Type:</label>
+                <input type="text" id="inv_type" name="inv_type"  value=<%=type %> ><br>
+
+                <label for="quantity">Quantity:</label>
+                <input type="text" id="quantity" name="quantity" value=<%=quantity%>><br>
+                
+                <label for="street">Street:</label>
+                <input type="text" id="street" name="street"  value=<%=inventory_address.street%> ><br>
+                
+                <label for="building">Building:</label>
+                <input type="text" id="building" name="building"  value=<%=inventory_address.building%>><br>
+                
+                <label for="zipcode">Country:</label>
+                <input type="text" id="country" name="country"  value=<%=inventory_address.country%>><br>
+
+                <label for="zipcode">Zipcode:</label>
+                <input type="text" id="zipcode" name="zipcode"  value=<%=inventory_address.zipcode%>><br>
+
+                <label for="latitude">GPS Latitude:</label>
+                <input type="text" id="latitude" name="latitude"  value=<%=inventory_address.coord.lat%>><br>
+                
+                <label for="longitude">GPS Longitude:</label>
+                <input type="text" id="longitude" name="longitude"  value=<%=inventory_address.coord.lon%>><br>
+
+                    <label  for="photo">Photo:</label>
+                    <input type="file"style="font-size: 20px;" id="photo" name="photo" placeholder="Please upload JPEG/PNG format"><br>
+                <div class =button>
+                    <input type="submit" value="Update" style="font-size: 25px;">
+                <input type="button" style="float: right ;font-size: 25px;"value="Back" onclick="history.back()">
+            </div>
+                
+            </form>
+    </body>
+</html>

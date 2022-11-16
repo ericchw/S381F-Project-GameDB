@@ -1,3 +1,3 @@
-const users =  [{username: "admin", password:"admin"},{username: "game", password:"game"}]
+const users =  [{username: "demo", password:""},{username: "student", password:""}]
 
 exports.users = users;

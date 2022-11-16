@@ -1,8 +1,8 @@
 const MongoClient = require("mongodb").MongoClient;
 const assert = require('assert');
 
-const mongourl = 'mongodb+srv://s1260229:s1260229@cluster0.yku7r.mongodb.net/';
-const dbName = 's381fProject';
+const mongourl = 'mongodb+srv://gamedb:gamedb@cluster0.z0zhbkh.mongodb.net/';
+const dbName = 'gamedb';
 const client = new MongoClient(mongourl);
 
 let _collection;
@@ -12,7 +12,7 @@ const mongodbConnect = (callback) => {
     client.connect((err) => {
         assert.equal(null, err);
         let db = client.db(dbName);
-        _collection = db.collection("inventories")
+        _collection = db.collection("app")
         callback();
     })
 }

@@ -1,4 +1,4 @@
-const getCollection = require("../server").getCollection;
+const getCollection = require("../utils/db").getCollection;
 const assert = require("assert");
 exports.create = (criteria, callback)=>{
     const collection = getCollection();

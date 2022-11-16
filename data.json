@@ -1,185 +1,185 @@
-{
-   "game":[
-      {
-         "id":730,
-         "type":"Game",
-         "name":"Counter-Strike: Global Offensive",
-         "developer":[
-            "Valve",
-            "Hidden Path Entertainment"
-         ],
-         "publisher":"Valve",
-         "os":[
-            "Windows",
-            "macOS",
-            "Linux"
-         ],
-         "releaseDate":"2012-08-21T17:00:00Z",
-         "lastUpdate":"2022-10-27T00:15:15Z",
-         "description":"Counter-Strike: Global Offensive (CS: GO) expands upon the team-based action gameplay that it pioneered when it was launched 19 years ago. CS: GO features new maps, characters, weapons, and game modes, and delivers updated versions of the classic CS content (de_dust2, etc.).",
-         "logoUrl":"https://steamcdn-a.akamaihd.net/steam/apps/730/header.jpg"
+[
+   {
+      "name":"Counter-Strike: Global Offensive",
+      "type":"Game",
+      "developer":[
+         "Valve",
+         "Hidden Path Entertainment"
+      ],
+      "publisher":"Valve",
+      "os" : {
+         "windows" : true,
+         "macos" : true,
+         "linux" : true
       },
-      {
-         "id":570,
-         "type":"Game",
-         "name":"Dota 2",
-         "developer":"Valve",
-         "publisher":"Valve",
-         "os":[
-            "Windows",
-            "macOS",
-            "Linux"
-         ],
-         "releaseDate":"2013-07-09T17:00:00Z",
-         "lastUpdate":"2022-11-11T01:15:04Z",
-         "description":"Every day, millions of players worldwide enter battle as one of over a hundred Dota heroes. And no matter if it's their 10th hour of play or 1,000th, there's always something new to discover. With regular updates that ensure a constant evolution of gameplay, features, and heroes, Dota 2 has taken on a life of its own.",
-         "logoUrl":"https://steamcdn-a.akamaihd.net/steam/apps/570/header.jpg"
+      "releaseDateAtAt":"2012-08-21T17:00:00Z",
+      "lastUpdateAtAt":"2022-10-27T00:15:15Z",
+      "lastUpdateBy": "system",
+      "description":"Counter-Strike: Global Offensive (CS: GO) expands upon the team-based action gameplay that it pioneered when it was launched 19 years ago. CS: GO features new maps, characters, weapons, and game modes, and delivers updated versions of the classic CS content (de_dust2, etc.).",
+      "photo":null,
+      "photo_type":null
+   },
+   {
+      "name":"Dota 2",
+      "type":"Game",
+      "developer":"Valve",
+      "publisher":"Valve",
+      "os" : {
+         "windows" : true,
+         "macos" : true,
+         "linux" : true
       },
-      {
-         "id":578080,
-         "type":"Game",
-         "name":"PUBG: BATTLEGROUNDS",
-         "developer":"KRAFTON, Inc.",
-         "publisher":"KRAFTON, Inc.",
-         "os":"Windows",
-         "releaseDate":"2017-12-21T08:05:00Z",
-         "lastUpdate":"2022-11-10T08:52:09Z",
-         "description":"Play PUBG: BATTLEGROUNDS for free. Land on strategic locations, loot weapons and supplies, and survive to become the last team standing across various, diverse Battlegrounds. Squad up and join the Battlegrounds for the original Battle Royale experience that only PUBG: BATTLEGROUNDS can offer.",
-         "logoUrl":"https://steamcdn-a.akamaihd.net/steam/apps/578080/header.jpg"
+      "releaseDateAt":"2013-07-09T17:00:00Z",
+      "lastUpdateAt":"2022-11-11T01:15:04Z",
+      "lastUpdateBy": "system",
+      "description":"Every day, millions of players worldwide enter battle as one of over a hundred Dota heroes. And no matter if it's their 10th hour of play or 1,000th, there's always something new to discover. With regular updates that ensure a constant evolution of gameplay, features, and heroes, Dota 2 has taken on a life of its own.",
+      "photo":null,
+      "photo_type":null
+   },
+   {
+      "name":"PUBG: BATTLEGROUNDS",
+      "type":"Game",
+      "developer":"KRAFTON, Inc.",
+      "publisher":"KRAFTON, Inc.",
+      "os" : {
+         "windows" : true,
+         "macos" : false,
+         "linux" : false
       },
-      {
-         "id":1172470,
-         "type":"Game",
-         "name":"Apex Legends",
-         "developer":"Respawn Entertainment",
-         "publisher":"Electronic Arts",
-         "os":"Windows",
-         "releaseDate":"2020-11-05T04:00:00Z",
-         "lastUpdate":"2022-11-14T07:50:48Z",
-         "description":"Apex Legends is the award-winning, free-to-play Hero Shooter from Respawn Entertainment. Master an ever-growing roster of legendary characters with powerful abilities, and experience strategic squad play and innovative gameplay in the next evolution of Hero Shooter and Battle Royale.",
-         "logoUrl":"https://steamcdn-a.akamaihd.net/steam/apps/1172470/header.jpg"
+      "releaseDateAt":"2017-12-21T08:05:00Z",
+      "lastUpdateAt":"2022-11-10T08:52:09Z",
+      "lastUpdateBy": "system",
+      "description":"Play PUBG: BATTLEGROUNDS for free. Land on strategic locations, loot weapons and supplies, and survive to become the last team standing across various, diverse Battlegrounds. Squad up and join the Battlegrounds for the original Battle Royale experience that only PUBG: BATTLEGROUNDS can offer.",
+      "photo":null,
+      "photo_type":null
+   },
+   {
+      "name":"Apex Legends",
+      "type":"Game",
+      "developer":"Respawn Entertainment",
+      "publisher":"Electronic Arts",
+      "os" : {
+         "windows" : true,
+         "macos" : false,
+         "linux" : false
       },
-      {
-         "id":1938090,
-         "type":"Game",
-         "name":"Call of Duty®: Modern Warfare® II",
-         "developer":"Windows",
-         "publisher":"Activision",
-         "os":[
-            "Infinity Ward",
-            "Raven Software",
-            "Beenox",
-            "Treyarch",
-            "High Moon Studios",
-            "Sledgehammer Games",
-            "Activision Shanghai",
-            "Demonware",
-            "Toys for Bob"
-         ],
-         "releaseDate":"2022-10-28T04:00:00Z",
-         "lastUpdate":"2022-11-13T06:18:07Z",
-         "description":"Call of Duty®: Modern Warfare® II drops players into an unprecedented global conflict that features the return of the iconic Operators of Task Force 141.",
-         "logoUrl":"https://steamcdn-a.akamaihd.net/steam/apps/1938090/header.jpg"
+      "releaseDateAt":"2020-11-05T04:00:00Z",
+      "lastUpdateAt":"2022-11-14T07:50:48Z",
+      "lastUpdateBy": "system",
+      "description":"Apex Legends is the award-winning, free-to-play Hero Shooter from Respawn Entertainment. Master an ever-growing roster of legendary characters with powerful abilities, and experience strategic squad play and innovative gameplay in the next evolution of Hero Shooter and Battle Royale.",
+      "photo":null,
+      "photo_type":null
+   },
+   {
+      "name":"Call of Duty®: Modern Warfare® II",
+      "type":"Game",
+      "developer":[
+         "Infinity Ward",
+         "Raven Software",
+         "Beenox",
+         "Treyarch",
+         "High Moon Studios",
+         "Sledgehammer Games",
+         "Activision Shanghai",
+         "Demonware",
+         "Toys for Bob"
+      ],
+      "publisher":"Activision",
+      "os" : {
+         "windows" : true,
+         "macos" : false,
+         "linux" : false
       },
-      {
-         "id":570,
-         "type":"Game",
-         "name":"Dota 2",
-         "developer":"Valve",
-         "publisher":"Valve",
-         "os":[
-            "Windows",
-            "macOS",
-            "Linux"
-         ],
-         "releaseDate":"2013-07-09T17:00:00Z",
-         "lastUpdate":"2022-11-11T01:15:04Z",
-         "description":"Every day, millions of players worldwide enter battle as one of over a hundred Dota heroes. And no matter if it's their 10th hour of play or 1,000th, there's always something new to discover. With regular updates that ensure a constant evolution of gameplay, features, and heroes, Dota 2 has taken on a life of its own.",
-         "logoUrl":"https://steamcdn-a.akamaihd.net/steam/apps/570/header.jpg"
+      "releaseDateAt":"2022-10-28T04:00:00Z",
+      "lastUpdateAt":"2022-11-13T06:18:07Z",
+      "lastUpdateBy": "system",
+      "description":"Call of Duty®: Modern Warfare® II drops players into an unprecedented global conflict that features the return of the iconic Operators of Task Force 141.",
+      "photo":null,
+      "photo_type":null
+   },
+   {
+      "name":"Grand Theft Auto V",
+      "type":"Game",
+      "developer":"Rockstar North",
+      "publisher":"Rockstar Games",
+      "os" : {
+         "windows" : true,
+         "macos" : false,
+         "linux" : false
       },
-      {
-         "id":271590,
-         "type":"Game",
-         "name":"Grand Theft Auto V",
-         "developer":"Rockstar North",
-         "publisher":"Rockstar Games",
-         "os":[
-            "Windows"
-         ],
-         "releaseDate":"2015-04-13T23:00:00Z",
-         "lastUpdate":"2022-11-11T17:32:57Z",
-         "description":"Grand Theft Auto V for PC offers players the option to explore the award-winning world of Los Santos and Blaine County in resolutions of up to 4k and beyond, as well as the chance to experience the game running at 60 frames per second.",
-         "logoUrl":"https://steamcdn-a.akamaihd.net/steam/apps/271590/header.jpg"
+      "releaseDateAt":"2015-04-13T23:00:00Z",
+      "lastUpdateAt":"2022-11-11T17:32:57Z",
+      "lastUpdateBy": "system",
+      "description":"Grand Theft Auto V for PC offers players the option to explore the award-winning world of Los Santos and Blaine County in resolutions of up to 4k and beyond, as well as the chance to experience the game running at 60 frames per second.",
+      "photo":null,
+      "photo_type":null
+   },
+   {
+      "name":"Wallpaper Engine",
+      "type":"Application",
+      "developer":"Wallpaper Engine Team",
+      "publisher":"Wallpaper Engine Team",
+      "os" : {
+         "windows" : true,
+         "macos" : false,
+         "linux" : false
       },
-      {
-         "id":431960,
-         "type":"Application",
-         "name":"Wallpaper Engine",
-         "developer":"Wallpaper Engine Team",
-         "publisher":"Wallpaper Engine Team",
-         "os":"Windows",
-         "releaseDate":"2018-11-16T18:03:05Z",
-         "lastUpdate":"2022-11-10T15:59:12Z",
-         "description":"Use stunning live wallpapers on your desktop. Animate your own images to create new wallpapers or import videos/websites and share them on the Steam Workshop!",
-         "logoUrl":"https://steamcdn-a.akamaihd.net/steam/apps/431960/header.jpg"
+      "releaseDateAt":"2018-11-16T18:03:05Z",
+      "lastUpdateAt":"2022-11-10T15:59:12Z",
+      "lastUpdateBy": "system",
+      "description":"Use stunning live wallpapers on your desktop. Animate your own images to create new wallpapers or import videos/websites and share them on the Steam Workshop!",
+      "photo":null,
+      "photo_type":null
+   },
+   {
+      "name":"Blender",
+      "type":"Application",
+      "developer":"Blender Foundation",
+      "publisher":"Blender Foundation",
+      "os" : {
+         "windows" : true,
+         "macos" : true,
+         "linux" : true
       },
-      {
-         "id":365670,
-         "type":"Application",
-         "name":"Blender",
-         "developer":"Blender Foundation",
-         "publisher":"Blender Foundation",
-         "os":[
-            "Windows",
-            "macOS",
-            "Linux"
-         ],
-         "releaseDate":"2015-04-24T14:17:00Z",
-         "lastUpdate":"2022-11-14T02:52:29Z",
-         "description":"Blender is the free and open source 3D creation suite. Free to use for everyone, for any purpose.",
-         "logoUrl":"https://steamcdn-a.akamaihd.net/steam/apps/365670/header.jpg"
+      "releaseDateAt":"2015-04-24T14:17:00Z",
+      "lastUpdateAt":"2022-11-14T02:52:29Z",
+      "lastUpdateBy": "system",
+      "description":"Blender is the free and open source 3D creation suite. Free to use for everyone, for any purpose.",
+      "photo":null,
+      "photo_type":null
+   },
+   {
+      "name":"OBS Studio",
+      "type":"Application",
+      "developer":"OBS Project",
+      "publisher":"OBS Project",
+      "os" : {
+         "windows" : true,
+         "macos" : true,
+         "linux" : true
       },
-      {
-         "id":1905180,
-         "type":"Application",
-         "name":"OBS Studio",
-         "developer":"OBS Project",
-         "publisher":"OBS Project",
-         "os":[
-            "Windows",
-            "macOS",
-            "Linux"
-         ],
-		 "releaseDate":"2022-03-22T18:02:00Z",
-         "lastUpdate":"2022-11-14T11:59:26Z",
-         "description":"Free and open-source software for video recording and live streaming.",
-         "logoUrl":"https://steamcdn-a.akamaihd.net/steam/apps/1905180/header.jpg"
+      "releaseDateAt":"2022-03-22T18:02:00Z",
+      "lastUpdateAt":"2022-11-14T11:59:26Z",
+      "lastUpdateBy": "system",
+      "description":"Free and open-source software for video recording and live streaming.",
+      "photo":null,
+      "photo_type":null
+   },
+   {
+      "name":"3DMark",
+      "type":"Application",
+      "developer":"UL Solutions",
+      "publisher":"UL Solutions",
+      "os" : {
+         "windows" : true,
+         "macos" : false,
+         "linux" : false
       },
-      {
-         "id":1905180,
-         "type":"Application",
-         "name":"3DMark",
-         "developer":"UL Solutions",
-         "publisher":"UL Solutions",
-         "os":"Windows",
-         "releaseDate":"2022-11-10T10:45:19Z",
-		 "lastUpdate":"2022-11-10T10:45:19Z",
-         "description":"3DMark is for gamers, overclockers and system builders who want to get more out of their hardware. With its wide range of benchmark tests, 3DMark has everything you need to test your PC's performance.",
-         "logoUrl":"https://steamcdn-a.akamaihd.net/steam/apps/1905180/header.jpg"
-      }
-   ]
-}
-
-
-
-{
-	"user":[
-		{
-			"sid":12550928,
-			"name":"admin",
-			"nickName":"Admin",
-			"createdDate":"2022-11-11T00:00:00Z",
-			"updatedDate":"2022-11-12T00:00:00Z",
-		}
-	]
-}
+      "releaseDateAt":"2022-11-10T10:45:19Z",
+      "lastUpdateAt":"2022-11-10T10:45:19Z",
+      "lastUpdateBy": "system",
+      "description":"3DMark is for gamers, overclockers and system builders who want to get more out of their hardware. With its wide range of benchmark tests, 3DMark has everything you need to test your PC's performance.",
+      "photo":null,
+      "photo_type":null
+   }
+]

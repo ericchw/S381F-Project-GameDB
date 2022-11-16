@@ -1,11 +1,16 @@
 {
-    "name": "group_project_name",
-    "description": "This is a project design by S381F group #39",
-    "author": "COMPS381F group #39",
+    "name": "gamedb",
+    "description": "This is a project design by S381F group #39. GameDB is database of everything on Steam.",
+    "author": "COMP-S381F Group #39",
     "version": "0.0.1",
     "dependencies": {
-        "express": "*"
-    },
+        "cookie-session": "*",
+        "ejs": "*",
+        "express": "*",
+        "formidable": "*",
+        "mongodb": "*",
+        "nodemon":"*"
+      },
     "engine": "node >= 12.0.0",
     "scripts": {
         "start": "node server"
