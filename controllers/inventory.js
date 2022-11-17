@@ -141,7 +141,7 @@ exports.handleGetEdit = (req, res) => {
   inventoryModel.read({ _id: objid }, {}, (result) => {
     if (result && result[0]["lastUpdateBy"] == req.session.username) {
       let r = result[0];
-      r.releaseDateAt = moment(r.releaseDateAt).seconds(0).milliseconds(0).toISOString().replace(/:00.000Z/, "");
+      r.releaseDateAt = moment(r.releaseDateAt).local().format("YYYY-MM-DDTHH:mm")
       res.render("edit", r);
     } else {
       res.render("err", { errmsg: "Cannot edit" });
