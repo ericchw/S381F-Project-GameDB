@@ -17,7 +17,7 @@ exports.handleGetShowinventory = (req, res) => {
   objid = ObjectId(req.query.id);
   inventoryModel.read({ _id: objid }, {}, (result) => {
     if (result) {
-      r = result[0]
+      let r = result[0]
       r.releaseDateAt = moment(r.releaseDateAt).utc().format("YYYY-MM-DD")
       r.lastUpdateAt = moment(r.lastUpdateAt).utc().format("YYYY-MM-DD")
       res.render("show", r);
