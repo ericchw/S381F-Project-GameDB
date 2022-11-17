@@ -1,3 +1,4 @@
+const moment = require("moment");
 const formidable = require("formidable");
 const fs = require("fs");
 const inventoryModel = require("../models/inventory");
@@ -16,7 +17,10 @@ exports.handleGetShowinventory = (req, res) => {
   objid = ObjectId(req.query.id);
   inventoryModel.read({ _id: objid }, {}, (result) => {
     if (result) {
-      res.render("show", result[0]);
+      r = result[0]
+      r.releaseDateAt = moment(r.releaseDateAt).utc().format("YYYY-MM-DD")
+      r.lastUpdateAt = moment(r.lastUpdateAt).utc().format("YYYY-MM-DD")
+      res.render("show", r);
     } else {
       res.render("err", { errmsg: "undefind" });
     }
