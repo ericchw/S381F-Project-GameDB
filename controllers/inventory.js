@@ -42,7 +42,7 @@ exports.handleCreate = (req, res) => {
         linux: fields.linux
       },
       releaseDateAt: new Date(fields.releaseDateAt).toISOString(),
-      lastUpdateAt: JSON.parse(JSON.stringify({now: new Date()})).now,
+      lastUpdateAt: new Date().toISOString(),
       lastUpdateBy: req.session.username,
       photo: null,
       photo_mimetype: null,
@@ -107,7 +107,7 @@ exports.handleEdit = (req, res) => {
               linux: Boolean(fields.linux)
             },
             releaseDateAt: new Date(fields.releaseDateAt).toISOString(),
-            lastUpdateAt: JSON.parse(JSON.stringify({now: new Date()})).now,
+            lastUpdateAt: new Date().toISOString(),
             lastUpdateBy: req.session.username,
             photo: result[0].photo,
             photo_mimetype: result[0].photo_mimetype,
