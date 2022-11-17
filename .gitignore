@@ -4306,3 +4306,11 @@ pic/DOTA2.jpg
 pic/GTA5.jpg
 pic/PUBG.jpg
 pic/Test.png
+node_modules/
+
+package-lock.json
+yarn.lock
+
+.DS_Store/
+
+pic/
