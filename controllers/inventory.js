@@ -18,8 +18,8 @@ exports.handleGetShowinventory = (req, res) => {
   inventoryModel.read({ _id: objid }, {}, (result) => {
     if (result) {
       let r = result[0]
-      r.releaseDateAt = moment(r.releaseDateAt).utc().format("YYYY-MM-DD")
-      r.lastUpdateAt = moment(r.lastUpdateAt).utc().format("YYYY-MM-DD")
+      r.releaseDateAt = moment(r.releaseDateAt).local().format("YYYY-MM-DD HH:mm:ss")
+      r.lastUpdateAt = moment(r.lastUpdateAt).local().format("YYYY-MM-DD HH:mm:ss")
       res.render("show", r);
     } else {
       res.render("err", { errmsg: "undefind" });
@@ -41,8 +41,8 @@ exports.handleCreate = (req, res) => {
         macos: fields.macos,
         linux: fields.linux
       },
-      releaseDateAt: JSON.parse(JSON.stringify({now: new Date()})).now,
-      lastUpdateAt: JSON.parse(JSON.stringify({now: new Date()})).now,
+      releaseDateAt: new Date(fields.releaseDateAt).toISOString(),
+      lastUpdateAt: new Date().toISOString(),
       lastUpdateBy: req.session.username,
       photo: null,
       photo_mimetype: null,
@@ -106,8 +106,8 @@ exports.handleEdit = (req, res) => {
               macos: fields.macos,
               linux: fields.linux
             },
-            releaseDateAt: JSON.parse(JSON.stringify({now: new Date()})).now,
-            lastUpdateAt: JSON.parse(JSON.stringify({now: new Date()})).now,
+            releaseDateAt: new Date(fields.releaseDateAt).toISOString(),
+            lastUpdateAt: new Date().toISOString(),
             lastUpdateBy: req.session.username,
             photo: result[0].photo,
             photo_mimetype: result[0].photo_mimetype,
@@ -140,7 +140,9 @@ exports.handleGetEdit = (req, res) => {
   objid = ObjectId(req.query.id);
   inventoryModel.read({ _id: objid }, {}, (result) => {
     if (result && result[0]["lastUpdateBy"] == req.session.username) {
-      res.render("edit", result[0]);
+      let r = result[0];
+      r.releaseDateAt = moment(r.releaseDateAt).seconds(0).milliseconds(0).toISOString().replace(/:00.000Z/, "");
+      res.render("edit", r);
     } else {
       res.render("err", { errmsg: "Cannot edit" });
     }
