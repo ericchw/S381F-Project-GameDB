@@ -102,9 +102,9 @@ exports.handleEdit = (req, res) => {
             developer: fields.developer,
             publisher: fields.publisher,
             os: {
-              windows: fields.windows,
-              macos: fields.macos,
-              linux: fields.linux
+              windows: Boolean(fields.windows),
+              macos: Boolean(fields.macos),
+              linux: Boolean(fields.linux)
             },
             releaseDateAt: new Date(fields.releaseDateAt).toISOString(),
             lastUpdateAt: new Date().toISOString(),
