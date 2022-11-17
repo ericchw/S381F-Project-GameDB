@@ -39,7 +39,6 @@ app.get('/', (req, res) => {
   catch(error){
     console.log(error);
   }
-
 });
 
 app.post('/', (req, res) => {
