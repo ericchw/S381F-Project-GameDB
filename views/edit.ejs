@@ -36,28 +36,28 @@
                 <!--the enctype attribute is required for a file upload control form-->
                 <!--the attribute is not encoding characters-->
                 <label for="name">Name*:</label>
-                <input type="text" id="name" name="name"  value=<%=name%> required><br>
+                <input type="text" id="name" name="name"  value="<%=name%>" required><br>
                 
                 <label for="type">Type:</label>
-                <input type="text" id="type" name="type" value=<%=type%>><br>
+                <input type="text" id="type" name="type" value="<%=type%>"><br>
 
                 <label for="description">Description:</label>
-                <input type="text" id="description" name="description" value=<%=description%>><br>
+                <input type="text" id="description" name="description" value="<%=description%>"><br>
                 
                 <label for="developer">Developer:</label>
-                <input type="text" id="developer" name="developer" value=<%=developer%>><br>
+                <input type="text" id="developer" name="developer" value="<%=developer%>"><br>
                 
                 <label for="publisher">Publisher:</label>
-                <input type="text" id="publisher" name="publisher" value=<%=publisher%>><br>
+                <input type="text" id="publisher" name="publisher" value="<%=publisher%>"><br>
                 
                 <label for="windows">Support Windows:</label>
-                <input type="checkbox" id="windows" name="windows" value=<%=os.windows%>><br>
+                <input type="checkbox" id="windows" name="windows" <% if(os.windows){ %>checked<% } %>><br>
 
                 <label for="macos">Support macOS:</label>
-                <input type="checkbox" id="macos" name="macos" value=<%=os.macos%>><br>
+                <input type="checkbox" id="macos" name="macos" <% if(os.macos){ %>checked<% } %>><br>
 
                 <label for="linux">Support Linux:</label>
-                <input type="checkbox" id="linux" name="linux" value=<%=os.linux%>><br>
+                <input type="checkbox" id="linux" name="linux" <% if(os.linux){ %>checked<% } %>><br>
                 
                 <label for="releaseDateAt">Release date at:</label>
                 <input type="datetime-local" id="releaseDateAt" name="releaseDateAt" value=<%=releaseDateAt%>><br>
