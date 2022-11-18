@@ -15,19 +15,13 @@ app.set('trust proxy', 1);
 app.get('/api/inventory/name/:name?', (req, res) => {
   try {
     inventoryController.getInvByName(req, res)
-  } catch (error) {
-    console.log(error)
-  }
+  } catch (error) {console.log(error) }
 });
 
 // for api get inventory by type
 app.get('/api/inventory/type/:type?', (req, res) => {
-  try {
-    inventoryController.getInvByType(req, res)
-  } catch (error) {
-    console.log(error)
-  }
-});
+  try{inventoryController.getInvByType(req,res)}
+catch(error){console.log(error)}});
 
 app.use(session({
   name: 'user-session',
@@ -37,92 +31,60 @@ app.use(session({
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-  try {
-    if (req.session.username) {
-      res.redirect('/main');
-    } else {
-      res.render('index');
-    }
-  } catch (error) {
+  try{if (req.session.username) {
+    res.redirect('/main');
+  } else {
+    res.render('index');
+  }}
+  catch(error){
     console.log(error);
   }
 });
 
 app.post('/', (req, res) => {
-  try {
-    if (req.session.username) {
-      res.redirect('/main');
-    } else {
-      userController.handleLogin(req, res);
-    }
-  } catch (error) {
+  try{if (req.session.username) {
+    res.redirect('/main');
+  }
+  else {
+    userController.handleLogin(req, res);
+  }}
+  catch(error){
     console.log(error)
   }
 });
 
 app.use('*', (req, res, next) => {
-  try {
-    if (req.session.username) {
-      next()
-    } else {
-      req.session = null;
-      res.redirect('/');
-    }
-  } catch (error) {
-    console.log(error)
-  }
-
+ try{if (req.session.username) {
+    next()
+  } else {
+    req.session = null;
+    res.redirect('/');
+  }}
+  catch(error){console.log(error)}
+  
 });
 
 app.get("/main", (req, res) => {
-  try {
-    inventoryController.handleGetMain(req, res);
-  } catch (error) {
-    console.log(error)
-  }
-});
+try{inventoryController.handleGetMain(req, res);}
+catch(error){console.log(error)}});
 app.get("/create", (req, res) => {
-  try {
-    inventoryController.handleGetCreateinventory(req, res);
-  } catch (error) {
-    console.log(error)
-  }
-});
+  try{inventoryController.handleGetCreateinventory(req, res);}
+  catch(error){console.log(error)}});
 app.get("/show", (req, res) => {
-  try {
-    inventoryController.handleGetShowinventory(req, res);
-  } catch (error) {
-    console.log(error)
-  }
-});
+  try{inventoryController.handleGetShowinventory(req, res);}
+  catch(error){console.log(error)}});
 app.get("/edit", (req, res) => {
-  try {
-    inventoryController.handleGetEdit(req, res);
-  } catch (error) {
-    console.log(error)
-  }
-});
-app.get("/delete", (req, res) => {
-  try {
-    inventoryController.handleDelete(req, res);
-  } catch (error) {
-    console.log(error)
-  }
-});
+  try{inventoryController.handleGetEdit(req, res);}
+  catch(error){console.log(error)}});
+app.get("/delete", (req, res) =>{
+  try{ inventoryController.handleDelete(req, res);}
+  catch(error){console.log(error)}});
 app.post('/create', (req, res) => {
-  try {
-    inventoryController.handleCreate(req, res);
-  } catch (error) {
-    console.log(error)
-  }
-});
+  try{ inventoryController.handleCreate(req, res);}
+  catch(error){console.log(error)}});
 app.post("/edit", (req, res) => {
-  try {
-    inventoryController.handleEdit(req, res);
-  } catch (error) {
-    console.log(error)
-  }
-});
+  try{ inventoryController.handleEdit(req, res);}
+catch(error){console.log(error)}});
 
 
 app.get('/logout', (req, res) => {

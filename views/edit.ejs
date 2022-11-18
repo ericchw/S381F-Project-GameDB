@@ -1,81 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-    h1 {
-        text-align: center;
-        font-size: 65px;
+    <style>
+    h1{
+        text-align:center;
+        font-size:65px;
     }
-
-    input[type=text],
-    select {
-        width: 100%;
-        padding: 10px 10px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-        font-size: 18px;
+    input[type=text], select {
+    width: 100%;
+    padding: 10px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size:18px;
     }
-
-    .button {
-
-        height: 5%;
-        color: white;
-        padding: 14px 20px;
-        margin: 20px 0;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
+    .button{
+        
+  height: 5%;
+  color: white;
+  padding: 14px 20px;
+  margin: 20px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
     }
-</style>
+    </style>
+    
+    <head>
+        <title>Edit <%=name%></title>
+    </head>
+    <body>       
+            <h1>Edit <%=name%></h1>
+            <form action="/edit/?id=<%=_id%>" method="POST" enctype="multipart/form-data">
+                <!--the enctype attribute is required for a file upload control form-->
+                <!--the attribute is not encoding characters-->
+                <label for="name">Name*:</label>
+                <input type="text" id="name" name="name"  value="<%=name%>" required><br>
+                
+                <label for="type">Type:</label>
+                <input type="text" id="type" name="type" value="<%=type%>"><br>
 
-<head>
-    <title>Edit <%=name%></title>
-</head>
+                <label for="description">Description:</label>
+                <input type="text" id="description" name="description" value="<%=description%>"><br>
+                
+                <label for="developer">Developer:</label>
+                <input type="text" id="developer" name="developer" value="<%=developer%>"><br>
+                
+                <label for="publisher">Publisher:</label>
+                <input type="text" id="publisher" name="publisher" value="<%=publisher%>"><br>
+                
+                <label for="windows">Support Windows:</label>
+                <input type="checkbox" id="windows" name="windows" <% if(os.windows){ %>checked<% } %>><br>
 
-<body>
-    <h1>Edit <%=name%></h1>
-    <form action="/edit/?id=<%=_id%>" method="POST" enctype="multipart/form-data">
-        <!--the enctype attribute is required for a file upload control form-->
-        <!--the attribute is not encoding characters-->
-        <label for="name">Name*:</label>
-        <input type="text" id="name" name="name" value="<%=name%>" required><br>
+                <label for="macos">Support macOS:</label>
+                <input type="checkbox" id="macos" name="macos" <% if(os.macos){ %>checked<% } %>><br>
 
-        <label for="type">Type:</label>
-        <input type="text" id="type" name="type" value="<%=type%>"><br>
+                <label for="linux">Support Linux:</label>
+                <input type="checkbox" id="linux" name="linux" <% if(os.linux){ %>checked<% } %>><br>
+                
+                <label for="releaseDateAt">Release date at:</label>
+                <input type="datetime-local" id="releaseDateAt" name="releaseDateAt" value=<%=releaseDateAt%>><br>
 
-        <label for="description">Description:</label>
-        <input type="text" id="description" name="description" value="<%=description%>"><br>
+                <label  for="photo">Photo:</label>
+                <input type="file"style="font-size: 20px;" id="photo" name="photo" placeholder="Please upload JPEG/PNG format."><br>
 
-        <label for="developer">Developer:</label>
-        <input type="text" id="developer" name="developer" value="<%=developer%>"><br>
-
-        <label for="publisher">Publisher:</label>
-        <input type="text" id="publisher" name="publisher" value="<%=publisher%>"><br>
-
-        <label for="windows">Support Windows:</label>
-        <input type="checkbox" id="windows" name="windows" <% if(os.windows){ %>checked<% } %>><br>
-
-        <label for="macos">Support macOS:</label>
-        <input type="checkbox" id="macos" name="macos" <% if(os.macos){ %>checked<% } %>><br>
-
-        <label for="linux">Support Linux:</label>
-        <input type="checkbox" id="linux" name="linux" <% if(os.linux){ %>checked<% } %>><br>
-
-        <label for="releaseDateAt">Release date at:</label>
-        <input type="datetime-local" id="releaseDateAt" name="releaseDateAt" value=<%=releaseDateAt%>><br>
-
-        <label for="photo">Photo:</label>
-        <input type="file" style="font-size: 20px;" id="photo" name="photo"
-            placeholder="Please upload JPEG/PNG format."><br>
-
-        <div class=button>
-            <input type="submit" value="Update" style="font-size: 25px;">
-            <input type="button" style="float: right ;font-size: 25px;" value="Back" onclick="history.back()">
-        </div>
-
-    </form>
-</body>
-
+                <div class =button>
+                    <input type="submit" value="Update" style="font-size: 25px;">
+                    <input type="button" style="float: right ;font-size: 25px;"value="Back" onclick="history.back()">
+                </div>
+                
+            </form>
+    </body>
 </html>

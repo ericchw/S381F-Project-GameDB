@@ -4,13 +4,8 @@ const fs = require("fs");
 const inventoryModel = require("../models/inventory");
 const ObjectId = require("mongodb").ObjectId;
 exports.handleGetMain = (req, res) => {
-  inventoryModel.read({}, {
-    name: 1
-  }, (result) => {
-    res.render("main", {
-      title: req.session.username,
-      result: result
-    });
+  inventoryModel.read({}, { name: 1 }, (result) => {
+    res.render("main", { title: req.session.username, result: result });
   });
 };
 
@@ -20,26 +15,20 @@ exports.handleGetCreateinventory = (req, res) => {
 
 exports.handleGetShowinventory = (req, res) => {
   objid = ObjectId(req.query.id);
-  inventoryModel.read({
-    _id: objid
-  }, {}, (result) => {
+  inventoryModel.read({ _id: objid }, {}, (result) => {
     if (result) {
       let r = result[0]
       r.releaseDateAt = moment(r.releaseDateAt).local().format("YYYY-MM-DD HH:mm:ss")
       r.lastUpdateAt = moment(r.lastUpdateAt).local().format("YYYY-MM-DD HH:mm:ss")
       res.render("show", r);
     } else {
-      res.render("err", {
-        errmsg: "undefind"
-      });
+      res.render("err", { errmsg: "undefind" });
     }
   });
 };
 
 exports.handleCreate = (req, res) => {
-  const form = formidable({
-    multiples: true
-  });
+  const form = formidable({ multiples: true });
   form.parse(req, (err, fields, files) => {
     let obj = {
       name: fields.name,
@@ -82,9 +71,7 @@ const invCreate = (obj, res) => {
     if (result) {
       res.redirect(`/show?id=${result}`);
     } else {
-      res.render("err", {
-        errmsg: "undefind"
-      });
+      res.render("err", { errmsg: "undefind" });
     }
   });
 };
@@ -94,25 +81,17 @@ const invUpdate = (obj, newObj, res) => {
     if (result) {
       res.redirect(`/show?id=${obj["_id"]}`);
     } else {
-      res.render("err", {
-        errmsg: "undefind"
-      });
+      res.render("err", { errmsg: "undefind" });
     }
   });
 };
 
 exports.handleEdit = (req, res) => {
   let objid = ObjectId(req.query.id);
-  const form = formidable({
-    multiples: true
-  });
-  inventoryModel.read({
-      _id: objid
-    }, {
-      photo: 1,
-      photo_mimetype: 1,
-      lastUpdateBy: 1
-    },
+  const form = formidable({ multiples: true });
+  inventoryModel.read(
+    { _id: objid },
+    { photo: 1, photo_mimetype: 1, lastUpdateBy: 1 },
     (result) => {
       if (result && result[0]["lastUpdateBy"] == req.session.username) {
         form.parse(req, (err, fields, files) => {
@@ -144,20 +123,14 @@ exports.handleEdit = (req, res) => {
             }
             fs.readFile(files.photo.filepath, (err, data) => {
               obj["photo"] = new Buffer.from(data).toString("base64");
-              invUpdate({
-                _id: objid
-              }, obj, res);
+              invUpdate({ _id: objid }, obj, res);
             });
           } else {
-            invUpdate({
-              _id: objid
-            }, obj, res);
+            invUpdate({ _id: objid }, obj, res);
           }
         });
       } else {
-        res.render("err", {
-          errmsg: "Cannot edit"
-        });
+        res.render("err", { errmsg: "Cannot edit" });
       }
     }
   );
@@ -165,50 +138,36 @@ exports.handleEdit = (req, res) => {
 
 exports.handleGetEdit = (req, res) => {
   objid = ObjectId(req.query.id);
-  inventoryModel.read({
-    _id: objid
-  }, {}, (result) => {
+  inventoryModel.read({ _id: objid }, {}, (result) => {
     if (result && result[0]["lastUpdateBy"] == req.session.username) {
       let r = result[0];
       r.releaseDateAt = moment(r.releaseDateAt).local().format("YYYY-MM-DDTHH:mm")
       res.render("edit", r);
     } else {
-      res.render("err", {
-        errmsg: "Cannot edit"
-      });
+      res.render("err", { errmsg: "Cannot edit" });
     }
   });
 };
 exports.handleDelete = (req, res) => {
   let objid = ObjectId(req.query.id);
-  inventoryModel.read({
-    _id: objid
-  }, {}, (result) => {
+  inventoryModel.read({ _id: objid }, {}, (result) => {
     if (result && result[0]["lastUpdateBy"] == req.session.username) {
-      inventoryModel.delete({
-        _id: objid
-      }, (result) => {
+      inventoryModel.delete({ _id: objid }, (result) => {
         if (result) {
           res.redirect(`/main`);
         } else {
-          res.render("err", {
-            errmsg: "Cannot delete"
-          });
+          res.render("err", { errmsg: "Cannot delete" });
         }
       });
     } else {
-      res.render("err", {
-        errmsg: "Cannot delete"
-      });
+      res.render("err", { errmsg: "Cannot delete" });
     }
   });
 };
 
 exports.getInvByName = (req, res) => {
   name = req.params.name;;
-  inventoryModel.read({
-    name: name
-  }, {}, (result) => {
+  inventoryModel.read({ name: name }, {}, (result) => {
     if (result.length === 0) {
       res.status(500).json({});
     } else {
@@ -220,9 +179,7 @@ exports.getInvByName = (req, res) => {
 exports.getInvByType = (req, res) => {
 
   type = req.params.type || "";
-  inventoryModel.read({
-    type: type
-  }, {}, (result) => {
+  inventoryModel.read({ type: type }, {}, (result) => {
     if (result.length === 0) {
       res.status(500).json({});
     } else {

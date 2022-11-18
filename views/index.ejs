@@ -1,75 +1,66 @@
+
 <!DOCTYPE html>
-<html>
-<style>
-  h1 {
-    text-align: center;
-    font-size: 65px;
-  }
-
-  input[type=submit] {
+<html >
+    <style>
+h1{
+    text-align:center;
+    font-size:65px;
+}
+input[type=submit] {
     width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 20px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 20px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.loginform{
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 100px;
+  font-size:30px;
+}
+label{
+    font-size:50px;
+}
+input[type=text], select {
+  width: 100%;
+  padding: 10px 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size:30px;
+}
+input[type=password], select {
+  width: 100%;
+  padding: 10px 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size:30px;
+}
+    </style>
+    <head>
+      <title>login</title>
+    </head>
+    <body>
+        <h1>Welcome</h1>
+        <div class=loginform>
+                <form action="/" method="post">
+                    <label for="username">Username: </label>
+                    <input type="text" name="username" id="username" placeholder="Username"><br>
 
-  .loginform {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 100px;
-    font-size: 30px;
-  }
-
-  label {
-    font-size: 50px;
-  }
-
-  input[type=text],
-  select {
-    width: 100%;
-    padding: 10px 10px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 30px;
-  }
-
-  input[type=password],
-  select {
-    width: 100%;
-    padding: 10px 10px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 30px;
-  }
-</style>
-
-<head>
-  <title>login</title>
-</head>
-
-<body>
-  <h1>Welcome</h1>
-  <div class=loginform>
-    <form action="/" method="post">
-      <label for="username">Username: </label>
-      <input type="text" name="username" id="username" placeholder="Username"><br>
-
-      <label for="Password">Password: </label>
-      <input type="password" name="password" id="password" placeholder="Password">
-      <br>
-      <input type="submit" value="login">
-    </form>
-  </div>
-</body>
-
+                    <label for="Password">Password: </label>
+                    <input type="password"  name="password" id="password" placeholder="Password">
+                    <br>                   
+                        <input type="submit" value="login" >
+                </form>
+        </div>
+    </body>
 </html>
