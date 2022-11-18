@@ -1,111 +1,121 @@
 <html lang="en">
-    <style>
-        h1{
-            text-align:center;
-            font-size:75px;
-            background-color: red;
-        }
-        h2{
-            text-align:center;
-            font-size:50px;
+<style>
+    h1 {
+        text-align: center;
+        font-size: 75px;
+        background-color: red;
+    }
 
-        }
-        .stname{
-            text-align:center;
-            font-size:25px;
-            font-style: italic;
-        }
-        .search{
-            font-size:30px;
-        }
-        .btn {
-                display: inline-block;
-                margin-bottom: 0;
-                font-weight: 400;
-                text-align: center;
-                white-space: nowrap;
-                vertical-align: middle;
-                -ms-touch-action: manipulation;
-                touch-action: manipulation;
-                cursor: pointer;
-                background-image: none;
-                border: 1px solid transparent;
-                padding: 6px
-            px
-            12px;
-                font-size: 25px;
-                line-height: 1.42857143;
-                border-radius: 4px;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-                user-select: none;
-            }
-                .btn-primary {
+    h2 {
+        text-align: center;
+        font-size: 50px;
+
+    }
+
+    .stname {
+        text-align: center;
+        font-size: 25px;
+        font-style: italic;
+    }
+
+    .search {
+        font-size: 30px;
+    }
+
+    .btn {
+        display: inline-block;
+        margin-bottom: 0;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -ms-touch-action: manipulation;
+        touch-action: manipulation;
+        cursor: pointer;
+        background-image: none;
+        border: 1px solid transparent;
+        padding: 6px px 12px;
+        font-size: 25px;
+        line-height: 1.42857143;
+        border-radius: 4px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .btn-primary {
         color: rgba(0, 0, 0, 0.692);
         background-color: #337ab7;
         border-color: #2e6da4;
     }
+
     .pull-right {
-        float: right!important;
+        float: right !important;
     }
+
     .row:before {
-    display: table;
-    content: " ";
-}
-table.myFormat tr td { font-size: 30px; }
-            </style>
-    <head>
+        display: table;
+        content: " ";
+    }
+
+    table.myFormat tr td {
+        font-size: 30px;
+    }
+</style>
+
+<head>
     <title>Main</title>
 </head>
+
 <body>
-    
-        <h1>Welcome! <%=title%></h1>
-        <h2>There are <%=result.length%> games.</h2>
-        <div class=stname></div>
+
+    <h1>Welcome! <%=title%></h1>
+    <h2>There are <%=result.length%> games.</h2>
+    <div class=stname></div>
     </div>
-        
-        <div class=row ml-md-auto>
-            <a href="/logout" class="btn btn-primary pull-right" role="button">Log out</a>
-            <a href="/create" class="btn btn-primary" role="button" >Create new game data</a>
+
+    <div class=row ml-md-auto>
+        <a href="/logout" class="btn btn-primary pull-right" role="button">Log out</a>
+        <a href="/create" class="btn btn-primary" role="button">Create new game data</a>
     </div>
-    <div class=search>  <p>Search game name:
-        <label for="bar"><span class="glyphicon glyphicon-search"></span></label><input style="width: 100%; font-size: 30px; 
-        height: 5%;"  type="text" id="myInput" placeholder="Search game name:" name="bar" ><br></p>
+    <div class=search>
+        <p>Search game name:
+            <label for="bar"><span class="glyphicon glyphicon-search"></span></label><input style="width: 100%; font-size: 30px; 
+        height: 5%;" type="text" id="myInput" placeholder="Search game name:" name="bar"><br></p>
     </div>
-    <div >
-        <table id="myTable" class='myFormat' >
+    <div>
+        <table id="myTable" class='myFormat'>
             <tr></tr>
         </table>
-            
-    </div>  
+
+    </div>
 
 
 
-</body></html>
+</body>
+
+</html>
 <script>
-let result = <%- JSON.stringify(result)%>;
-console.log(result)
-document.getElementById("myInput").addEventListener("keyup", myFunction);
-function myFunction() { 
-    var table = document.getElementById("myTable");
-    var char = document.getElementById("myInput").value;
-    table.innerHTML = "";
-    for (let i=0;i<result.length;i++){
-        if (result[i].name.indexOf(char)>=0){
-            var row = table.insertRow();
-            cell = row.insertCell();
-            let a = document.createElement("a");
-            a.innerHTML = result[i].name;
-            a.href = "/show?id="+(result[i]._id).toString();
-            cell.append(a);}
+    let result = < % -JSON.stringify(result) % > ;
+    console.log(result)
+    document.getElementById("myInput").addEventListener("keyup", myFunction);
+
+    function myFunction() {
+        var table = document.getElementById("myTable");
+        var char = document.getElementById("myInput").value;
+        table.innerHTML = "";
+        for (let i = 0; i < result.length; i++) {
+            if (result[i].name.indexOf(char) >= 0) {
+                var row = table.insertRow();
+                cell = row.insertCell();
+                let a = document.createElement("a");
+                a.innerHTML = result[i].name;
+                a.href = "/show?id=" + (result[i]._id).toString();
+                cell.append(a);
+            }
         }
-}
+    }
 
-myFunction();
+    myFunction();
 </script>
-
-
-
-
-

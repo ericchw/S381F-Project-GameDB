@@ -1,71 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title><%=name%> details</title>
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-        crossorigin=""/>
-        <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-      integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-      crossorigin=""></script>
-            
-        <script>
-            function goBack() { window.history.back();}
-        </script>
-        <style>
-            img {
-              max-width: 100%;
-              height: 10%;
-            }
-            #map {
-                height: 50%;
-            }
-            .row{
-                font-size:25px;
-}
-        </style>
-    </head>
-    <body>
-        <div class="jumbotron text-center">
-            <h1 style="text-align:center;font-size:35px;">Details of <%=name%></h1>
-        </div>
-        <div class="container-fluid">
-            <div class="well">
-                <div class="row">
-                    
-                    <% if(photo){ %>
-                        <img src="data:<%= photo_mimetype %>;base64, <%= photo %>" style="width:20" />
-                    <% } %>
-                        
-                        <br>
-                    
-                </div>
-                <div class="row">
-                    <table style="width:100%">
-                        <tr><td><p>Name:</p></td><td><p><%=name%></p></td></tr>
-                        <tr><td><p>Type:</p></td><td><p><%=type%></p></td></tr>
-                        <tr><td><p>Description:</p></td><td><p><%=description%></p></td></tr>
-                        <tr><td><p>Developer:</p></td><td><p><%=developer%></p></td></tr>
-                        <tr><td><p>Publisher:</p></td><td><p><%=publisher%></p></td></tr>
-                        <tr><td><p>Support Windows:</p></td><% if(os.windows){ %><td><p>Support</p></td> <% } %><% if(!os.windows){ %><td><p>Not Support</p></td><% } %></tr>
-                        <tr><td><p>Support macOS:</p></td><% if(os.macos){ %><td><p>Support</p></td> <% } %><% if(!os.macos){ %><td><p>Not Support</p></td><% } %></tr>
-                        <tr><td><p>Support Linux:</p></td><% if(os.linux){ %><td><p>Support</p></td> <% } %><% if(!os.linux){ %><td><p>Not Support</p></td> <% } %></tr>
-                        <tr><td><p>Release date at:</p></td><td><p> <%=releaseDateAt%> </p></td></tr>
-                        <tr><td><p>Last update at:</p></td><td><p> <%=lastUpdateAt%> </p></td></tr>
-                        <tr><td><p>Last update by:</p></td><td><p><%=lastUpdateBy%></p></td></tr>
-                    </table>
-                    <br>
-            </div>
-            </div>
-            <div class="row ml-md-auto">
 
-                <a href="/edit?id=<%=_id%>" class="btn btn-primary" role="button">Edit</a>
-                <a href="/delete?id=<%=_id%>" class="btn btn-primary" role="button">Delete</a>
-                <button class="btn btn-primary"  style="float: right ;font-size: 25px;" onclick="location.href='/main'">Home</button>
-                <button class="btn btn-primary"  style="float: right ;font-size: 25px;" onclick="goBack()">Back</button>
+<head>
+    <title><%=name%> details</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+        crossorigin=""></script>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    <style>
+        img {
+            max-width: 100%;
+            height: 10%;
+        }
+
+        #map {
+            height: 50%;
+        }
+
+        .row {
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="jumbotron text-center">
+        <h1 style="text-align:center;font-size:35px;">Details of <%=name%></h1>
+    </div>
+    <div class="container-fluid">
+        <div class="well">
+            <div class="row">
+
+                <% if(photo){ %>
+                <img src="data:<%= photo_mimetype %>;base64, <%= photo %>" style="width:20" />
+                <% } %>
+
+                <br>
             </div>
-            <br>            
+            <div class="row">
+                <table style="width:100%">
+                    <tr>
+                        <td>
+                            <p>Name:</p>
+                        </td>
+                        <td>
+                            <p><%=name%></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Type:</p>
+                        </td>
+                        <td>
+                            <p><%=type%></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Description:</p>
+                        </td>
+                        <td>
+                            <p><%=description%></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Developer:</p>
+                        </td>
+                        <td>
+                            <p><%=developer%></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Publisher:</p>
+                        </td>
+                        <td>
+                            <p><%=publisher%></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Support Windows:</p>
+                        </td><% if(os.windows){ %><td>
+                            <p>Support</p>
+                        </td> <% } %><% if(!os.windows){ %><td>
+                            <p>Not Support</p>
+                        </td><% } %>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Support macOS:</p>
+                        </td><% if(os.macos){ %><td>
+                            <p>Support</p>
+                        </td> <% } %><% if(!os.macos){ %><td>
+                            <p>Not Support</p>
+                        </td><% } %>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Support Linux:</p>
+                        </td><% if(os.linux){ %><td>
+                            <p>Support</p>
+                        </td> <% } %><% if(!os.linux){ %><td>
+                            <p>Not Support</p>
+                        </td> <% } %>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Release date at:</p>
+                        </td>
+                        <td>
+                            <p> <%=releaseDateAt%> </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Last update at:</p>
+                        </td>
+                        <td>
+                            <p> <%=lastUpdateAt%> </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Last update by:</p>
+                        </td>
+                        <td>
+                            <p><%=lastUpdateBy%></p>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+            </div>
         </div>
-    </body>
-    
+        <div class="row ml-md-auto">
+
+            <a href="/edit?id=<%=_id%>" class="btn btn-primary" role="button">Edit</a>
+            <a href="/delete?id=<%=_id%>" class="btn btn-primary" role="button">Delete</a>
+            <button class="btn btn-primary" style="float: right ;font-size: 25px;"
+                onclick="location.href='/main'">Home</button>
+            <button class="btn btn-primary" style="float: right ;font-size: 25px;" onclick="goBack()">Back</button>
+        </div>
+        <br>
+    </div>
+</body>
+
 </html>
