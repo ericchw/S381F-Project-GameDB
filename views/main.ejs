@@ -30,9 +30,7 @@
                 cursor: pointer;
                 background-image: none;
                 border: 1px solid transparent;
-                padding: 6px
-            px
-            12px;
+                padding: 12px;
                 font-size: 25px;
                 line-height: 1.42857143;
                 border-radius: 4px;
@@ -42,18 +40,22 @@
                 user-select: none;
             }
                 .btn-primary {
-        color: rgba(0, 0, 0, 0.692);
-        background-color: #337ab7;
-        border-color: #2e6da4;
-    }
-    .pull-right {
-        float: right!important;
-    }
-    .row:before {
-    display: table;
-    content: " ";
-}
-table.myFormat tr td { font-size: 30px; }
+                color: rgba(0, 0, 0, 0.692);
+                background-color: #337ab7;
+                border-color: #2e6da4;
+            }
+            .pull-right {
+                float: right!important;
+            }
+            .row:before {
+                display: table;
+                content: " ";
+            }
+            table.myFormat tr td { 
+                font-size: 30px; 
+                border-collapse: collapse;
+                min-width: 50px;
+            }
             </style>
     <head>
     <title>Main</title>
@@ -91,15 +93,18 @@ function myFunction() {
     var table = document.getElementById("myTable");
     var char = document.getElementById("myInput").value;
     table.innerHTML = "";
-    for (let i=0;i<result.length;i++){
+    for (let i=1;i<=result.length;i++){
         if (result[i].name.indexOf(char)>=0){
             var row = table.insertRow();
             cell = row.insertCell();
+            cell2 = row.insertCell();
             let a = document.createElement("a");
             a.innerHTML = result[i].name;
             a.href = "/show?id="+(result[i]._id).toString();
-            cell.append(a);}
+            cell.append(i+ '.');
+            cell2.append(a);
         }
+    }
 }
 
 myFunction();
