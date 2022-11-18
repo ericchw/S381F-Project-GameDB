@@ -4,26 +4,29 @@
     h1{
         text-align:center;
         font-size:65px;
+        background-color:red;
     }
     input[type=text], select {
-    width: 100%;
-    padding: 10px 10px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size:18px;
+        width: 100%;
+        padding: 10px 10px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size:18px;
     }
     .button{
-        
-  height: 5%;
-  color: white;
-  padding: 14px 20px;
-  margin: 20px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+        height: 5%;
+        color: white;
+        padding: 14px 20px;
+        margin: 20px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .required {
+        color: red;
     }
     </style>
     
@@ -35,7 +38,11 @@
             <form action="/create" method="POST" enctype="multipart/form-data">
                 <!--the enctype attribute is required for a file upload control form-->
                 <!--the attribute is not encoding characters-->
-                <label for="name">Name*:</label>
+                <p aria-hidden="true" id="required-description" style="text-align:right">
+                    <span class="required">*</span>Required field
+                </p>
+
+                <label for="name">Name<span class="required">*</span>:</label>
                 <input type="text" id="name" name="name"  placeholder="Name" required><br>
                 
                 <label for="type">Type:</label>
@@ -59,8 +66,8 @@
                 <label for="linux">Support Linux:</label>
                 <input type="checkbox" id="linux" name="linux"  placeholder="linux"><br>
                 
-                <label for="releaseDateAt">Release date at:</label>
-                <input type="datetime-local" id="releaseDateAt" name="releaseDateAt"  placeholder="releaseDateAt"><br>
+                <label for="releaseDateAt">Release date at<span class="required">*</span>:</label>
+                <input type="datetime-local" id="releaseDateAt" name="releaseDateAt"  placeholder="releaseDateAt" required><br>
 
                 <label  for="photo">Photo:</label>
                 <input type="file"style="font-size: 20px;" id="photo" name="photo" placeholder="Please upload JPEG/PNG format."><br>
