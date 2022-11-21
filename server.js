@@ -11,6 +11,34 @@ const KEY2 = ".inoignisodfngiagpasdopfopnirgni4tj0294"
 
 app.set('trust proxy', 1);
 
+app.use(session({
+  name: 'user-session',
+  keys: [KEY1, KEY2]
+}));
+
+// API
+app.post("/api/login", (req, res)=> {
+  const form = new formidable.IncomingForm();
+  form.parse(req, (err, fields, files) => {
+      for(let user of userModel.users){
+          if (user.username == fields.username && user.password == fields.password){
+              req.session.username = user.username;
+              req.session.authenticated = true;
+              res.redirect('/main');
+              return;
+          }
+      }
+      res.render('err',{"errmsg":"login fail"})
+    }
+});
+
+app.post('/api/logout', (req, res)=> {
+  if(req.session.username){
+    req.session = null;
+    res.write('Logout Success')
+  }
+});
+
 // for api get inventory by name
 app.get('/api/inventory/name/:name?', (req, res) => {
   try {
@@ -23,10 +51,7 @@ app.get('/api/inventory/type/:type?', (req, res) => {
   try{inventoryController.getInvByType(req,res)}
 catch(error){console.log(error)}});
 
-app.use(session({
-  name: 'user-session',
-  keys: [KEY1, KEY2]
-}));
+
 
 app.set('view engine', 'ejs');
 
@@ -91,6 +116,9 @@ app.get('/logout', (req, res) => {
   req.session = null;
   res.redirect('/');
 });
+
+
+
 
 
 db.mongodbConnect(() => {
