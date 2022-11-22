@@ -29,7 +29,7 @@ app.post("/api/login", (req, res)=> {
           }
       }
       res.render('err',{"errmsg":"login fail"})
-    }
+    })
 });
 
 app.post('/api/logout', (req, res)=> {
