@@ -16,26 +16,22 @@ app.use(session({
   keys: [KEY1, KEY2]
 }));
 
+// Set View Engine. Please put API above this section.
+app.set('view engine', 'ejs');
+
 // API
 app.post("/api/login", (req, res)=> {
-  const form = new formidable.IncomingForm();
-  form.parse(req, (err, fields, files) => {
-      for(let user of userModel.users){
-          if (user.username == fields.username && user.password == fields.password){
-              req.session.username = user.username;
-              req.session.authenticated = true;
-              res.redirect('/main');
-              return;
-          }
-      }
-      res.render('err',{"errmsg":"login fail"})
-    })
+  try {
+    userController.handleAPILogin(req, res);
+  }  catch (error) {console.log(error)}
 });
 
-app.post('/api/logout', (req, res)=> {
+app.get('/api/logout', (req, res)=> {
   if(req.session.username){
-    req.session = null;
-    res.write('Logout Success')
+    req.session = null; 
+    res.status(200).json({message:"Logged Out"});
+  }else{
+    res.status(404).json({message:"You have not logged in yet!"});
   }
 });
 
@@ -53,8 +49,7 @@ catch(error){console.log(error)}});
 
 
 
-app.set('view engine', 'ejs');
-
+// View Route
 app.get('/', (req, res) => {
   try{if (req.session.username) {
     res.redirect('/main');
@@ -116,8 +111,6 @@ app.get('/logout', (req, res) => {
   req.session = null;
   res.redirect('/');
 });
-
-
 
 
 
