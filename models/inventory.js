@@ -35,7 +35,6 @@ exports.delete =(criteria, callback)=>{
     const collection = getCollection();
     collection.deleteOne(criteria,(err,result)=>{
         try{
-            
             assert.equal(err,null);
             callback(result)
         }catch(error){
