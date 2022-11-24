@@ -161,6 +161,7 @@ exports.handleGetEdit = (req, res) => {
     }
   });
 };
+
 exports.handleDelete = (req, res) => {
   let objid = ObjectId(req.query.id);
   inventoryModel.read({ _id: objid }, {}, (result) => {
@@ -214,11 +215,9 @@ exports.handleApiDelete = (req, res) => {
         }
       });
     } else {
-      res
-        .status(400)
-        .json({
-          message: "No record or you no permission to remove this data.",
-        });
+      res.status(400).json({
+        message: "No record or you no permission to remove this data.",
+      });
     }
   });
 };
@@ -230,39 +229,92 @@ exports.getInvList = (req, res) => {
 };
 
 exports.handleAPICreate = (req, res) => {
+  const body = req.body;
   let obj = {
-    name: req.body.name,
-    type: req.body.type,
-    description: req.body.description,
-    developer: req.body.developer,
-    publisher: req.body.publisher,
+    name: body.name,
+    type: body.type,
+    description: body.description,
+    developer: body.developer,
+    publisher: body.publisher,
     os: {
-      windows: req.body.windows,
-      macos: req.body.macos,
-      linux: req.body.linux,
+      windows: body.windows,
+      macos: body.macos,
+      linux: body.linux,
     },
-    releaseDateAt: new Date(req.body.releaseDateAt).toISOString(),
+    releaseDateAt: new Date(body.releaseDateAt).toISOString(),
     lastUpdateAt: new Date().toISOString(),
     lastUpdateBy: req.session.username,
     photo: null,
     photo_mimetype: null,
   };
-  if (files.photo.size > 0) {
-    const filename = files.photo.filepath;
+  console.log(req.files);
+  if (req.files > 0) {
+    const filename = req.files.photo.filepath;
     let title = "untitled";
-    if (req.body.title && req.body.title.length > 0) {
-      title = req.body.title;
+    if (body.title && body.title.length > 0) {
+      title = body.title;
     }
-    if (files.photo.mimetype) {
-      obj["photo_mimetype"] = files.photo.mimetype;
+    if (req.files.photo.mimetype) {
+      obj["photo_mimetype"] = req.files.photo.mimetype;
     }
-    fs.readFile(files.photo.filepath, (err, data) => {
+    fs.readFile(req.files.photo.filepath, (err, data) => {
       obj["photo"] = new Buffer.from(data).toString("base64");
-      invCreate(obj, res);
     });
     res.status(200).json({ message: "Success" });
   } else {
     invCreate(obj, res);
     res.status(200).json({ message: "Success" });
   }
+};
+
+exports.handleAPIEdit = (req, res) => {
+  let objid = ObjectId(req.params.id);
+  const body = req.body;
+  inventoryModel.read(
+    { _id: objid },
+    { photo: 1, photo_mimetype: 1, lastUpdateBy: 1 },
+    (result) => {
+      if (result && result[0]["lastUpdateBy"] == req.session.username) {
+        let obj = {
+          name: body.name,
+          type: body.type,
+          description: body.description,
+          developer: body.developer,
+          publisher: body.publisher,
+          os: {
+            windows: Boolean(body.windows),
+            macos: Boolean(body.macos),
+            linux: Boolean(body.linux),
+          },
+          releaseDateAt: new Date(body.releaseDateAt).toISOString(),
+          lastUpdateAt: new Date().toISOString(),
+          lastUpdateBy: req.session.username,
+          photo: result[0].photo,
+          photo_mimetype: result[0].photo_mimetype,
+        };
+        invUpdate({ _id: objid }, obj, res)
+        res.status(200).json({ message: "Success"});
+        // if (req.files.photo.size > 0) {
+        //   const filename = req.files.photo.filepath;
+        //   let title = "untitled";
+        //   if (body.title && body.title.length > 0) {
+        //     title = body.title;
+        //   }
+        //   if (req.files.photo.mimetype) {
+        //     obj["photo_mimetype"] = req.files.photo.mimetype;
+        //   }
+        //   fs.readFile(req.files.photo.filepath, (err, data) => {
+        //     obj["photo"] = new Buffer.from(data).toString("base64");
+        //     invUpdate({ _id: objid }, obj, res);
+        //     res.status(200).json({ message: "Success" });
+        //   });
+        // } else {
+        //   invUpdate({ _id: objid }, obj, res);
+        //   res.status(200).json({ message: "Success" });
+        // }
+      } else {
+        res.status(400).json({ message:"Cannot edit" });
+      }
+    }
+  );
 };

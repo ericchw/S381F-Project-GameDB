@@ -24,7 +24,7 @@ exports.handleAPILogin = (req, res) => {
             if (user.username == fields.username && user.password == fields.password){
                 req.session.username = user.username;
                 req.session.authenticated = true;
-                res.send(200);
+                res.status(200).json({message: "Success"});
                 return;
             }
         }

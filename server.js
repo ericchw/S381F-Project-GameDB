@@ -18,7 +18,7 @@ app.use(
   })
 );
 
-app.use(express.json());
+
 
 // Set View Engine. Please put API above this section.
 app.set("view engine", "ejs");
@@ -49,39 +49,38 @@ app.get("/api/inventory/list", (req, res) => {
   }
 });
 
+
 app.post("/api/inventory/create", (req, res) => {
   if (req.session.username) {
     try {
       inventoryController.handleAPICreate(req, res);
     } catch (error) {
-      res.send(400);
+      console.log(error);
+      res.status(400).json({ message: error });
     }
   }
 });
 
-app.get("/api/inventory/edit/:id", (req, res) => {
+app.post("/api/inventory/edit/:id", (req, res) => {
   try {
-    inventoryController.handleEdit(req, res);
+    inventoryController.handleAPIEdit(req, res);
   } catch (error) {
+    console.log(error);
     res.status(400).json({ message: error });
   }
 });
 
 // for api get inventory by name
-app.get("/api/inventory/name/:name?", (req, res) => {
-  if (req.session.username) {
+app.get("/api/inventory/name/:name", (req, res) => {
     try {
       inventoryController.getInvByName(req, res);
     } catch (error) {
       console.log(error);
     }
-  } else {
-    res.status(400).json({ message: "You have not logged in yet!" });
-  }
 });
 
 // for api get inventory by type
-app.get("/api/inventory/type/:type?", (req, res) => {
+app.get("/api/inventory/type/:type", (req, res) => {
   try {
     inventoryController.getInvByType(req, res);
   } catch (error) {
@@ -89,7 +88,7 @@ app.get("/api/inventory/type/:type?", (req, res) => {
   }
 });
 
-app.get("/api/inventory/delete/:id?", (req, res) => {
+app.get("/api/inventory/delete/:id", (req, res) => {
   try {
     inventoryController.handleApiDelete(req, res);
   } catch (error) {
