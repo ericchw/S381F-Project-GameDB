@@ -1,8 +1,12 @@
-const MongoClient = require("mongodb").MongoClient;
+require('dotenv').config()
+// console.log(process.env)
+
+const MongoClient = require("mongodb-legacy").MongoClient;
 const assert = require('assert');
 
-const mongourl = 'mongodb+srv://gamedb:gamedb@cluster0.z0zhbkh.mongodb.net/';
-const dbName = 'gamedb';
+const mongourl = process.env.MONGOURL; //mongodb+srv://[username]:[password]@cluster0.[dbid].mongodb.net/
+const dbName = process.env.DBNAME;
+const collection = process.env.DBCONNECTION;
 const client = new MongoClient(mongourl);
 
 let _collection;
@@ -11,8 +15,8 @@ let _collection;
 const mongodbConnect = (callback) => {
     client.connect((err) => {
         assert.equal(null, err);
-        let db = client.db(dbName);
-        _collection = db.collection("games")
+        let db = client.db(dbName); //gamedb
+        _collection = db.collection(collection) //games
         callback();
     })
 }
