@@ -20,7 +20,7 @@ username: admin
 password: admin
 
 ## Testing Instruction
-1. Visit http://s381f-project-gamedb.herokuapp.com/ by any browser.
+1. Visit http://43.198.225.47:8099/ by any browser.
 2. You should see a login panel. Enter the testing account username and the password to login in the system.
 3. After you login the system, there have a list show the game which been recorded. Click one of the game name can show you the details of the game.
 4. In the detail page, Edit and Delete buttons has shown at the top-left corner. Also, Back and Home buttons has shown at top-right corner. We can try to click the edit button first.
